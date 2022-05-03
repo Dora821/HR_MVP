@@ -48,7 +48,10 @@ const HomeExpense =({allExpense, addExpense}) => {
       <Box className={classes.incomeEntry} m={1} pt={5}>
         <Expense allExpense={allExpense} addExpense={addExpense}/>
       </Box>
-      <Box className={classes.expenseEntry} m={1} pt={10}>
+      {/* <Box>
+        <div>Search Bar Main</div>
+      </Box> */}
+      <Box className={classes.expenseEntry} style={{top: '0', marginTop: '0'}} m={1} pt={10}>
         <Details allExpense={allExpense}/>
       </Box>
       {/* <Box className={classes.savingEntry}>
