@@ -1,7 +1,12 @@
 import React from 'react';
-function Details() {
+import DetailTable from './DetailTable.jsx';
+
+const Details = ({allExpense}) => {
   return (
-    <div>Details;</div>
+      <DetailTable allExpense={allExpense}/>
+
   )
 }
+
 export default Details;
+

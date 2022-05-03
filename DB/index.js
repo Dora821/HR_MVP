@@ -34,10 +34,10 @@ module.exports = {
     return Expense.create(obj);
   },
   getTotalIncome: (obj) => {
-    return Income.find({}).exec();
+    return Income.find({}).sort({date: '-1'}).exec();
   },
   getTotalExpense: (obj) => {
-    return Expense.find({}).exec();
+    return Expense.find({}).sort({date: '-1'}).exec();
   },
   getCurMoExpense:(month)=> {
     return db.getCollection('Expense').aggregate([

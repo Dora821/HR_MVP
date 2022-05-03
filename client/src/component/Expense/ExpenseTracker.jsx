@@ -22,6 +22,8 @@ function ExpenseTracker({allExpense}) {
           "#FF5722",
           "#F4511E",
           "#BF360C",
+          '#FFC154',
+          '#FFC152',
         ],
         borderColor: "black" ,
         borderwidth: 2,

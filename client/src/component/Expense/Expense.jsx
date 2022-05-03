@@ -22,12 +22,14 @@ const Expense = ({addExpense, allExpense}) => {
   // const [allIncomeByCategory, setAllIncomeByCategory]
 
   const reducer = (obj, category) => {
+    console.log('obj in the obj', obj);
     if (obj.length > 0) {
-      let curArray = obj.filter((each)=>each.category === category).map((each)=>each.amount);
+      let curArray = obj.filter((each)=>each.Category === category).map(each=>each.Amount);
+      console.log('curArray being added', curArray);
       if (curArray.length > 0) {
         console.log('curArray', curArray);
-        console.log('reduce amount', curArray.reduce((a, b)=>a+b))
-        return curArray.reduce((a, b)=>a+b);
+        // console.log('reduce amount', curArray.reduce((a, b)=> Number(a)+ Number(b));
+        return curArray.reduce((a, b)=>Number(a)+ Number(b)).toFixed(2);
       }
     } else {
       return 0;
@@ -40,8 +42,10 @@ const Expense = ({addExpense, allExpense}) => {
     {Shopping: reducer(allExpense, 'Shopping')},
     {House: reducer(allExpense, 'House')},
     {Utilities: reducer(allExpense, 'Utilities')},
-    {Cars: reducer(allExpense, 'Cars')},
-    {Kids: reducer(allExpense, 'Kids')}
+    {Cars: reducer(allExpense, 'Car')},
+    {Kids: reducer(allExpense, 'Kids')},
+    {Travel: reducer(allExpense, 'Travel')},
+    {Health: reducer(allExpense, 'Health')}
   ]
 
   console.log('income by Catrgory', expenseByCategory);

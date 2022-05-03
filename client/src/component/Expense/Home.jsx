@@ -17,25 +17,28 @@ const useStyles = makeStyles({
   },
   title: {
     backgroundColor:'#C4C4C4',
-    flexBasis: '7%',
+    flexBasis: '15%',
   },
   incomeEntry: {
     backgroundColor:'#C4C4C4',
-    flexBasis: '30%',
+    flexBasis: '40%',
     borderRadius: '2%',
+    margin: '0',
   },
   expenseEntry: {
     backgroundColor:'#C4C4C4',
-    flexBasis: '50%',
+    flexBasis: '45%',
     borderRadius: '2%',
-  },
-  savingEntry: {
-    backgroundColor:'#C4C4C4',
-    flexBasis: '13%',
   }
 })
+//   savingEntry: {
+//     backgroundColor:'#C4C4C4',
+//     flexBasis: '13%',
+//   }
+// })
 
 const HomeExpense =({allExpense, addExpense}) => {
+  console.log('allEpxnese in HomeExpense', allExpense);
   const classes = useStyles();
   return (
     <Box className={classes.container} >
@@ -46,11 +49,11 @@ const HomeExpense =({allExpense, addExpense}) => {
         <Expense allExpense={allExpense} addExpense={addExpense}/>
       </Box>
       <Box className={classes.expenseEntry} m={1} pt={10}>
-        <Details allExpense={allExpense} addExpense={addExpense} />
+        <Details allExpense={allExpense}/>
       </Box>
-      <Box className={classes.savingEntry}>
+      {/* <Box className={classes.savingEntry}>
         <Savings />
-      </Box>
+      </Box> */}
     </Box>
   )
 };

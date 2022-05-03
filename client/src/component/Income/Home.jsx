@@ -16,26 +16,28 @@ const useStyles = makeStyles({
     gap: '5px'
   },
   title: {
-    backgroundColor:'#C4C4C4',
-    flexBasis: '7%',
+    backgroundColor:'purple',
+    flexBasis: '20%',
+    // height: '15vh',
+    // width: '100vw',
   },
   incomeEntry: {
-    backgroundColor:'#C4C4C4',
-    flexBasis: '30%',
-    borderRadius: '2%',
-  },
-  expenseEntry: {
     backgroundColor:'#C4C4C4',
     flexBasis: '50%',
     borderRadius: '2%',
   },
-  savingEntry: {
+  expenseEntry: {
     backgroundColor:'#C4C4C4',
-    flexBasis: '13%',
-  }
+    flexBasis: '35%',
+    borderRadius: '2%',
+  },
+  // savingEntry: {
+  //   backgroundColor:'#C4C4C4',
+  //   flexBasis: '13%',
+  // }
 })
 
-const HomeIncome =({allIncome, allExpense, addExpense, addIncome}) => {
+const HomeIncome =({allIncome, addIncome}) => {
   const classes = useStyles();
   return (
     <Box className={classes.container} >
@@ -46,11 +48,11 @@ const HomeIncome =({allIncome, allExpense, addExpense, addIncome}) => {
         <Income allIncome={allIncome} addIncome={addIncome}/>
       </Box>
       <Box className={classes.expenseEntry} m={1} pt={10}>
-        <Details />
+        <Details allIncome={allIncome}/>
       </Box>
-      <Box className={classes.savingEntry}>
+      {/* <Box className={classes.savingEntry}>
         <Savings />
-      </Box>
+      </Box> */}
     </Box>
   )
 };

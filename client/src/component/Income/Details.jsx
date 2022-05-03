@@ -1,12 +1,9 @@
 import React from 'react';
+import DetailTable from './DetailTable.jsx';
 
-
-const Details = () => {
+const Details = ({allIncome}) => {
   return (
-    <div>
-      <h1>Expense</h1>
-    </div>
-
+    <DetailTable allIncome={allIncome}></DetailTable>
   )
 }
 
