@@ -3,7 +3,6 @@ import {render} from 'react-dom';
 import HomeExpense from './Expense/Home.jsx';
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
-import Provider from './Context/Context.js';
 import 'regenerator-runtime/runtime';
 const axios = require('axios');
 import Details from './Expense/Details.jsx';

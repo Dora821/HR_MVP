@@ -1,7 +1,6 @@
 import React, {useState, useContext} from 'react';
 import { TextField, Typography, Grid, Button, FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
 import { makeStyles } from '@mui/styles';
-import {TrackerContext} from '../Context/Context.js';
 import formatDate from '../../utils/formatDate.js';
 
 const useStyles = makeStyles({
@@ -21,7 +20,6 @@ const ExpenseForm=({addExpenseTransaction})=>{
 
   const [entry, setEntry] = useState(initialState);
 
-  // const usedContext = useContext(TrackerContext)
   console.log('addTransaction', addExpenseTransaction);
 
   console.log('entry', entry);

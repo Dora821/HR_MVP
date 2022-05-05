@@ -1,5 +1,4 @@
 import React, {useState, useContext} from 'react';
-import {TrackerContext} from '../Context/Context.js';
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import ReactApexChart from 'react-apexcharts';
