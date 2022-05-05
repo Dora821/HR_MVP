@@ -2,32 +2,41 @@
 # MVP FIRE EXPENSE TRACKER
 
 This is a full stack react application for user to track their monthly expenses. The applcation is upported by REST API and Mongo DB.
---
 
+---
 ## Installation
 
 1) Fork project and clone to local repository
 
 2) Install all packages by running the following commands in your terminal.
+
 ```
 npm install
 ```
 
-3) create .env file and create variable PORT=3000
+3) create .env file and create variable
+
 ```
+PORT=3000
+```
+
+
 4) Start the server(runs Nodemon on server>index.js). In the terminal type
 ```
 npm run dev-server
 ```
 5) Start webpack (webpack serve --open). Install nodemon, In the terminal type
-```
 
+```
 npm run watch
+```
+
+6) Open the website in your web browser.
 
 ```
-6) Open the website in your web browser.
 http://localhost:3000
 
+```
 ---
 
 ## Application Overview
