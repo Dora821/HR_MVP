@@ -17,7 +17,7 @@ class ExpenseTracker extends React.Component {
         },
         labels: this.props.allExpense.name,
         responsive: [{
-          breakpoint: 480,
+          // breakpoint: 480,
           options: {
             chart: {
               id: this.props.allExpense.id,

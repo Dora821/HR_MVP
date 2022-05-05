@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Expense from './Expense.jsx';
 import Details from './Details.jsx';
 import Savings from './Savings.jsx';
@@ -43,7 +43,18 @@ const useStyles = makeStyles({
 })
 
 const HomeExpense =({allExpense, addExpense}) => {
-  let barCharExpense = ExpCategories.map(each=>BarCharReducer(allExpense, each));
+  const [all, setAllExpense] = useState(allExpense);
+  useEffect(()=>
+  {
+    setAllExpense(allExpense);
+  }, allExpense)
+
+  useEffect(()=>
+  {
+    setAllExpense(all);
+  }, all)
+
+  let barCharExpense = ExpCategories.map(each=>BarCharReducer(all, each));
   console.log('barCharExpense', barCharExpense)
 
   console.log('allEpxnese in HomeExpense', allExpense);
@@ -55,7 +66,7 @@ const HomeExpense =({allExpense, addExpense}) => {
           <ExpenseForm addExpenseTransaction={addExpense} />
         </Box>
         <Box style={{backgroundColor:'transparent'}} className={classes.piechart}>
-          <Expense allExpense={allExpense}/>
+          <Expense allExpense={all}/>
         </Box>
       </Box>
       <Box className={classes.lineChart}>
