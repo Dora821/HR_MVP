@@ -47,6 +47,7 @@ module.exports = {
     return Expense.find({impulsive: true}).sort({amount: '-1'}).limit(5).exec();
   },
   delteteExpense: (obj)=> {
-    return Expense.remove(obj);
+    console.log('obj in DB', obj);
+    return Expense.deleteOne(obj);
   },
 };

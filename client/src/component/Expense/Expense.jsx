@@ -1,6 +1,5 @@
 import {Grid, Divider} from '@material-ui/core';
 import ExpenseTracker from './ExpenseTracker.jsx';
-import ExpenseDes from './ExpenseDes.jsx';
 import React, {useState, useContext} from 'react';
 import Reducer from '../../utils/Reducer.js';
 

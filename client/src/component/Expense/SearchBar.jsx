@@ -61,13 +61,13 @@ export default function SearchBar({setDetails, allExpense}) {
           <MenuItem value={'Shopping'}>Shopping</MenuItem>
           <MenuItem value='House' >House</MenuItem>
           <MenuItem value={'Utilities'}>Utilities</MenuItem>
-          <MenuItem value={'Cars'}>Car</MenuItem>
+          <MenuItem value={'Car'}>Car</MenuItem>
           <MenuItem value={'Kids'}>Kids</MenuItem>
           <MenuItem value={'Travel'}>Travel</MenuItem>
           <MenuItem value={'Health'}>Health</MenuItem>
         </Select>
       </FormControl>
-      <Paper tyle={{flex: '1', minWidth: '50vw', flexGrow: '1', order: '1', justifyContent: 'center'}}
+      {/* <Paper tyle={{flex: '1', minWidth: '50vw', flexGrow: '1', order: '1', justifyContent: 'center'}}
         component="form"
         sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}>
         <IconButton sx={{ p: '10px' }} aria-label="menu">
@@ -82,7 +82,7 @@ export default function SearchBar({setDetails, allExpense}) {
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
         <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
         </IconButton>
-      </Paper>
+      </Paper> */}
     </Box>
   );
 }

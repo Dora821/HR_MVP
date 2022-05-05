@@ -81,6 +81,8 @@ const App = ()=>{
       fectchData();
   }, [])
 
+
+
   const addExpenseTransaction = (obj) => {
     console.log('adding expense in app', obj)
     axios.post('/fire/expense', obj)
@@ -90,6 +92,26 @@ const App = ()=>{
         setAllExpense(transactions);
       })
       .catch(error=>console.log('error occurred when adding expense', error))
+  }
+
+  const deleteExpenseTransaction = (index) => {
+    let deleteObj;
+    console.log('idx', index);
+    console.log('allExpense in delete', allExpense);
+    for (var i=0; i < allExpense.length; i++) {
+      if (i === index) {
+        deleteObj = allExpense[i];
+        break;
+      }
+    }
+    console.log('item to be deleted', deleteObj);
+    axios.delete('/fire/expense', {data: {_id: deleteObj._id}})
+    .then(result => {
+      console.log('delete post expense', result);
+      let transactions = result.data;
+      setAllExpense(transactions);
+    })
+    .catch(error=>console.log('error occurred when adding expense', error))
   }
   console.log('allxpense in app,', allExpense)
   return (
@@ -104,7 +126,7 @@ const App = ()=>{
           {allExpense.length === 0 ? <p>'Loading'</p> : <HomeExpense allExpense={allExpense} addExpense={addExpenseTransaction}/>}
         </Box>
         <Box className={classes.DetailsStyle} >
-          {allExpense.length === 0 ? <p>'Loading'</p> : <Details allExpense={allExpense} addExpense={addExpenseTransaction}/>}
+          {allExpense.length === 0 ? <p>'Loading'</p> : <Details allExpense={allExpense} deleteExpense={deleteExpenseTransaction}/>}
         </Box>
       </Box>
   )

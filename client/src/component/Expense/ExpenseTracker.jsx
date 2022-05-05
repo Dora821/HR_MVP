@@ -36,12 +36,11 @@ class ExpenseTracker extends React.Component {
 
   render() {
     console.log('this.props.data', this.props.allExpense.data);
-    console.log('this.state.data', this.state.series);
     return (
 
 
 <div id="chart">
-<ReactApexChart wifth='100%' height={300} options={this.state.options} series={this.props.allExpense.data} type="donut" />
+<ReactApexChart width='100%' height={300} options={this.state.options} series={this.props.allExpense.data} type="donut" />
 </div>
 
 

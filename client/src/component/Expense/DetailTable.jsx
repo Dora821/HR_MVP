@@ -10,7 +10,10 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import formatDate from '../../utils/formatDate.js';
 import MuiTableHead from "@material-ui/core/TableHead";
-
+import orderBy from "lodash/orderBy";
+import MdKeyboardArrowUp from 'react-icons/md'
+import MdKeyboardArrowDown from 'react-icons/md';
+import {MdDeleteOutline} from 'react-icons/md';
 const columns = [
   { id: 'date', label: 'Date', minWidth: 170 },
   { id: 'vendor', label: 'Vendor', minWidth: 100 },
@@ -22,23 +25,49 @@ const columns = [
   },
   {
     id: 'amount',
-    label: 'vendor',
+    label: 'Amount',
     minWidth: 170,
     align: 'right',
     format: (value) => value.toFixed(2),
   },
 ];
 
-export default function DetailTable({allExpense}) {
+const invertDirection = {
+  asc: "desc",
+  desc: "asc"
+};
+
+const organizeExp = (allExpense)=> {
+  return allExpense.map(function(each, idx) {
+    return {date: each['TransactionDate'].slice(0, 10), vendor: each['Vendor'], category: each['Category'], amount: each['Amount'], idx: idx
+  };
+})
+};
+export default function DetailTable({allExpense,  deleteExpense}) {
   // console.log('row', rows);
   // console.log('allExpense in detail table', allExpense);
-  let tableData = allExpense.map(function(each) {
-    return {date: each['TransactionDate'].slice(0, 10), vendor: each['Vendor'], category: each['Category'], amount: each['Amount']};
-  })
+
+  const [columnToSort, setColumn] = React.useState('');
+  const [sortDirection, setSortDirection] = React.useState('desc');
+  const [tableData, setTable] = React.useState(organizeExp(allExpense))
+
+  React.useEffect(()=>{
+    setTable(organizeExp(allExpense))
+  }, [allExpense])
+  let rows = orderBy(tableData, columnToSort, sortDirection);
   // console.log(tableData);
-  const rows = tableData;
+  // console.log('colunmName', columnToSort);
+  // console.log('columnSortyBY, ', sortDirection)
+
+  // console.log('rows in detail table', rows);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleSort = (columnName)=> {
+    console.log('columnName clicked', columnName);
+    setColumn(columnName);
+    setSortDirection(columnToSort === columnName? invertDirection[sortDirection] : 'asc')
+  }
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -62,7 +91,7 @@ export default function DetailTable({allExpense}) {
             <TableHead>
               <TableRow>
                 {columns.map((column) => (
-                  <TableCell
+                  <TableCell style={{backgroundColor:'black'}} onClick={()=>handleSort(column.id)}
                     key={column.id}
                     align={column.align}
                     style={{ minWidth: column.minWidth }}
@@ -70,6 +99,7 @@ export default function DetailTable({allExpense}) {
                     {column.label}
                   </TableCell>
                 ))}
+                {/* <TableCell>Delete</TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>
@@ -88,6 +118,7 @@ export default function DetailTable({allExpense}) {
                           </TableCell>
                         );
                       })}
+                      <div onClick={()=>deleteExpense(row.idx)}><MdDeleteOutline style={{paddingTop: '5px', marginTop: '10px'}} size={30}/></div>
                     </TableRow>
                   );
                 })}
