@@ -1,8 +1,7 @@
 
 # MVP FIRE EXPENSE TRACKER
-
 This is a full stack react application for user to track their monthly expenses. The applcation is upported by REST API and Mongo DB.
-<img alt='website overview' src='Images/MainPage.png'>
+![](Images/MainPage.png)
 ---
 ## Installation
 
@@ -52,6 +51,7 @@ The website is divided into three serctions
 
   3. Transaction details window allows you to sort transctions by clicking the column title and filter transactions by selecting from the drop down menu
 
+---
   ## Future Enhancements
 
   * Plan to do regression analysis to predict next month's expenses
