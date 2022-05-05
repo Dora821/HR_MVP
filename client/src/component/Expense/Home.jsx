@@ -4,59 +4,63 @@ import Details from './Details.jsx';
 import Savings from './Savings.jsx';
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
+import ExpenseForm from './ExpenseForm.jsx';
+import BarChart from './BarChart.jsx';
+import ExpCategories from '../../utils/ExpCategories.js';
+import BarCharReducer from '../../utils/BarCharReducer.js';
 
 
 const useStyles = makeStyles({
   container:{
-    height: '100vh',
-    width: '50vw',
     display:'flex',
-    flexDirection:'column',
     // gridTemplateRows: '1fr, 2fr, 4fr, 2fr',
-    gap: '5px'
+    gap: '5px',
+    margin: 'auto',
+    // backgroundColor: 'pink'
   },
-  title: {
-    backgroundColor:'#C4C4C4',
-    flexBasis: '15%',
+  expenseForm: {
+    flex: '0 0 50%',
+    flexGrow: '1',
+    flexBasis: '0',
+    minWidth: '50%',
+    margin: 'auto',
+    flexShrink: '1',
+    padding: 'auto',
+    // display: 'flex',
+    // flexDirection: 'column',
+    // width: '80vw',
   },
-  incomeEntry: {
-    backgroundColor:'#C4C4C4',
-    flexBasis: '40%',
-    borderRadius: '2%',
-    margin: '0',
-  },
-  expenseEntry: {
-    backgroundColor:'#C4C4C4',
-    flexBasis: '45%',
-    borderRadius: '2%',
+
+  lineChart: {
+    // backgroundColor:'#C4C4C4',
+    flex: '0 0 50%',
+    flexGrow: '1',
+    flexBasis: '0',
+    minWidth: '50%',
+    margin: '5px',
+    flexShrink: '1',
   }
 })
-//   savingEntry: {
-//     backgroundColor:'#C4C4C4',
-//     flexBasis: '13%',
-//   }
-// })
 
 const HomeExpense =({allExpense, addExpense}) => {
+  let barCharExpense = ExpCategories.map(each=>BarCharReducer(allExpense, each));
+  console.log('barCharExpense', barCharExpense)
+
   console.log('allEpxnese in HomeExpense', allExpense);
   const classes = useStyles();
   return (
-    <Box className={classes.container} >
-       <Box className={classes.title} >
-        Life on Fire
+    <Box sx={{m:2, mx:'auto'}} className={classes.container} >
+      <Box style = {{backgroundColor: 'transparent'}} clssName={classes.expenseForm}>
+        <Box className={classes.form}>
+          <ExpenseForm addExpenseTransaction={addExpense} />
+        </Box>
+        <Box style={{backgroundColor:'transparent'}} className={classes.piechart}>
+          <Expense allExpense={allExpense}/>
+        </Box>
       </Box>
-      <Box className={classes.incomeEntry} m={1} pt={5}>
-        <Expense allExpense={allExpense} addExpense={addExpense}/>
+      <Box className={classes.lineChart}>
+        <BarChart allExpense={barCharExpense}/>
       </Box>
-      {/* <Box>
-        <div>Search Bar Main</div>
-      </Box> */}
-      <Box className={classes.expenseEntry} style={{top: '0', marginTop: '0'}} m={1} pt={10}>
-        <Details allExpense={allExpense}/>
-      </Box>
-      {/* <Box className={classes.savingEntry}>
-        <Savings />
-      </Box> */}
     </Box>
   )
 };

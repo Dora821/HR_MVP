@@ -8,36 +8,29 @@ var db = mongoose.connection;
 // set up schema and models used by the app
 var Schema = mongoose.Schema;
 
-var income = new Schema({
-  amount: Number,
-  payer: String,
-  date: {type: Date, default: Date.now},
-  category: String
-});
-
 var expense = new Schema({
-  amount: Number,
-  vendor: String,
-  date: {type: Date, default: Date.now},
-  category: String,
-  impulse: Boolean
+  Amount: Number,
+  Vendor: String,
+  TransactionDate: {type: Date, default: Date.now},
+  Category: String,
+  Impulse: Boolean
 });
 
-var Income = mongoose.model('Income', income, 'Income');
 var Expense = mongoose.model('Expense', expense, 'Expense');
 
+// Expense.updateMany({}, [{$set:
+//   {
+//     TransactionDate: {$dateFromString : {dateString: '$TransactionDate'}}
+//   }
+// }]
+// );
+
 module.exports = {
-  saveIncome: (obj) => {
-    return Income.create(obj);
-  },
   saveExpense: (obj) => {
     return Expense.create(obj);
   },
-  getTotalIncome: (obj) => {
-    return Income.find({}).sort({date: '-1'}).exec();
-  },
   getTotalExpense: (obj) => {
-    return Expense.find({}).sort({date: '-1'}).exec();
+    return Expense.find({}).sort({TransactionDate: '-1'}).exec();
   },
   getCurMoExpense:(month)=> {
     return db.getCollection('Expense').aggregate([
@@ -56,8 +49,4 @@ module.exports = {
   delteteExpense: (obj)=> {
     return Expense.remove(obj);
   },
-  deleteIncome: (obj)=>{
-    return Income.remove(obj);
-  }
-
 };

@@ -4,17 +4,16 @@ import SearchBar from './SearchBar.jsx';
 
 const Details = ({allExpense}) => {
   const [detailsToDisplay, setDetails] = useState(allExpense);
-  console.log('allExpense', allExpense);
+  console.log('allExpense in Details', allExpense);
   console.log('detailsToDisplay', detailsToDisplay);
   useEffect(()=>{
-
-    setDetails(allExpense);
+    setDetails(detailsToDisplay);
   }, [detailsToDisplay])
 
   return (
     <div>
-      <SearchBar></SearchBar>
-      {allExpense.length>0 && <DetailTable allExpense={allExpense}/>}
+      <SearchBar setDetails={setDetails} allExpense={allExpense}></SearchBar>
+      {detailsToDisplay.length>0 && <DetailTable allExpense={detailsToDisplay}/>}
     </div>
   )
 }

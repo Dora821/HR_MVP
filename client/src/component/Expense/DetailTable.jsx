@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -7,6 +8,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import formatDate from '../../utils/formatDate.js';
+import MuiTableHead from "@material-ui/core/TableHead";
 
 const columns = [
   { id: 'date', label: 'Date', minWidth: 170 },
@@ -30,9 +33,9 @@ export default function DetailTable({allExpense}) {
   // console.log('row', rows);
   // console.log('allExpense in detail table', allExpense);
   let tableData = allExpense.map(function(each) {
-    return {date: each['Date'].slice(0,10), vendor: each['Vendor'], category: each['Category'], amount: each['Amount']};
+    return {date: each['TransactionDate'].slice(0, 10), vendor: each['Vendor'], category: each['Category'], amount: each['Amount']};
   })
-  console.log(tableData);
+  // console.log(tableData);
   const rows = tableData;
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -45,9 +48,14 @@ export default function DetailTable({allExpense}) {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+  // const TableHead = withStyles(theme => ({
+  //   root: {
+  //     backgroundColor: '#DEE2E6'
+  //   }
+  // }))(MuiTableHead);
 
   return (
-    <div style={{backgroundColor:'black'}}>
+    <div>
       <Paper sx={{ width: '100%', overflow: 'hidden' }}>
         <TableContainer sx={{ maxHeight: 440 }}>
           <Table stickyHeader aria-label="sticky table">

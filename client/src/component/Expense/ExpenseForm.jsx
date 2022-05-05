@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react';
 import { TextField, Typography, Grid, Button, FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
 import { makeStyles } from '@mui/styles';
 import {TrackerContext} from '../Context/Context.js';
-
+import formatDate from '../../utils/formatDate.js';
 
 const useStyles = makeStyles({
   button: {
@@ -13,10 +13,10 @@ const useStyles = makeStyles({
 const ExpenseForm=({addExpenseTransaction})=>{
   const classes = useStyles();
   let initialState = {
-    amount: '',
-    category: '',
-    vendor: '',
-    date: new Date()
+    Amount: '',
+    Category: '',
+    Vendor: '',
+    TransactionDate: formatDate(new Date()),
   };
 
   const [entry, setEntry] = useState(initialState);
@@ -30,15 +30,15 @@ const ExpenseForm=({addExpenseTransaction})=>{
     <Grid container spacing={1}>
       <Grid item xs={3}>
         <FormControl fullWidth>
-          <TextField value={entry.date} onChange={(e)=>setEntry({...entry, date: e.target.value})} InputLabelProps={{ shrink: true }} type='date' label='Date' fullWidth/>
+          <TextField value={entry.TransactionDate} onChange={(e)=>setEntry({...entry, TransactionDate: formatDate(e.target.value)})} InputLabelProps={{ shrink: true }} type='date' label='Date' fullWidth/>
         </FormControl>
       </Grid>
       <Grid item xs={3}>
-        <TextField value={entry.vendor} onChange={(e)=>setEntry({...entry, vendor: e.target.value})} InputLabelProps={{ shrink: true }} type='string' label='vendor' fullWidth/>
+        <TextField value={entry.Vendor} onChange={(e)=>setEntry({...entry, Vendor: e.target.value})} InputLabelProps={{ shrink: true }} type='string' label='vendor' fullWidth/>
       </Grid>
       <Grid item xs={3}>
        <FormControl fullWidth>
-        <TextField fullWidth value={entry.category} onChange={(e)=>setEntry({...entry,category: e.target.value})} displayEmpty InputLabelProps={{ shrink: true }} label='Category' select >
+        <TextField fullWidth value={entry.Category} onChange={(e)=>setEntry({...entry,Category: e.target.value})} displayEmpty InputLabelProps={{ shrink: true }} label='Category' select >
             <MenuItem value='' disabled >Empty</MenuItem>
             <MenuItem value={'Grocery'}>Grocery</MenuItem>
             <MenuItem value={'Food'}>Food</MenuItem>
@@ -54,7 +54,7 @@ const ExpenseForm=({addExpenseTransaction})=>{
         </FormControl>
       </Grid>
       <Grid item xs={2}>
-          <TextField value={entry.amount} onChange={(e)=>setEntry({...entry, amount: e.target.value})} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} InputLabelProps={{ shrink: true }} type='number' label='Amount' fullWidth/>
+          <TextField value={entry.Amount} onChange={(e)=>setEntry({...entry, Amount: e.target.value})} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} InputLabelProps={{ shrink: true }} type='number' label='Amount' fullWidth/>
       </Grid>
       <Grid item xs={1}>
         <Button style={{
@@ -63,7 +63,14 @@ const ExpenseForm=({addExpenseTransaction})=>{
           maxHeight: "35px",
           minWidth: "40px",
           minHeight: "35px"
-        }} color='D85f5f' type='secondary' variant={'contained'} onClick={()=>{addExpenseTransaction(entry); setEntry(initialState)}}>Add</Button>
+        }} color='D85f5f' type='secondary' variant={'contained'} onClick={()=>{
+          if (entry.Amount && entry.TransactionDate && entry.Vendor && entry.Category) {
+            addExpenseTransaction(entry);
+            setEntry(initialState);
+          } else {
+            alert('Please Fill In All The Field')
+          }
+          }}>Add</Button>
       </Grid>
     </Grid>
   )
