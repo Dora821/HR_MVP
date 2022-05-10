@@ -81,3 +81,6 @@ app.delete('/fire/income', (req, res)=>{
     .catch(err=>console.error(err));
 });
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'))
+  })
