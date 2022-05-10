@@ -34,7 +34,7 @@ const Expense = ({addExpense, allExpense}) => {
 
   const expenseByCategory = {
     id: '1',
-    name: ['Grocery', 'Food', 'Entertainment', 'Shopping', 'House', 'Utilities', 'Cars', 'Kids', 'Travel', 'Health'],
+    name: ['Grocery', 'Food', 'Entertainment', 'Shopping', 'House', 'Utilities', 'Car', 'Kids', 'Travel', 'Health'],
     data: [Reducer(allExpense, 'Grocery'), Reducer(allExpense, 'Food'), Reducer(allExpense, 'Entertainment'), Reducer(allExpense, 'Shopping'), Reducer(allExpense, 'House'), Reducer(allExpense, 'Utilities'), Reducer(allExpense, 'Car'), Reducer(allExpense, 'Kids'), Reducer(allExpense, 'Travel'), Reducer(allExpense, 'Health')]
   }
 

@@ -44,7 +44,7 @@ const ExpenseForm=({addExpenseTransaction})=>{
             <MenuItem value={'Shopping'}>Shopping</MenuItem>
             <MenuItem value='House' >House</MenuItem>
             <MenuItem value={'Utilities'}>Utilities</MenuItem>
-            <MenuItem value={'Cars'}>Car</MenuItem>
+            <MenuItem value={'Car'}>Car</MenuItem>
             <MenuItem value={'Kids'}>Kids</MenuItem>
             <MenuItem value={'Travel'}>Travel</MenuItem>
             <MenuItem value={'Health'}>Health</MenuItem>

@@ -23,12 +23,12 @@ class BarChart extends React.Component {
             enabled: true
           }
         },
-        responsive: [{
-          breakpoint: 480,
-          options: {
+        // responsive: [{
+        //   breakpoint: 480,
+        //   options: {
 
-          }
-        }],
+        //   }
+        // }],
         plotOptions: {
           bar: {
             horizontal: false,
