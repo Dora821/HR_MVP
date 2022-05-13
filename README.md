@@ -40,12 +40,12 @@ http://localhost:3000
 
 ## Application Overview
 
-The website is divided into three serctions
+The website is divided into three serctions:
   1. The summary windows gives you information on
-    1 The first expense occurred
-    2 The last expense occurred
-    3 How many expense transactions in total
-    4 The total expenses accumulated
+    1. The first expense occurred
+    2. The last expense occurred
+    3. How many expense transactions in total
+    4. The total expenses accumulated
 
   2. The chart analysis displays the ratio on each expense category and indicates the expense trends over a year spreadig over different months
 
